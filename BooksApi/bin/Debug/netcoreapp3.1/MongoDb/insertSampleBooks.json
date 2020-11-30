@@ -1,0 +1,29 @@
+db.Books.insertMany([{
+        "book_id": "2",
+        "authors": ["David Herron"], 
+        "title": "Node.js Web Development, 5th Edition", 
+        "description": "Build scalable web applications using Node.js, Express.js, and the latest ECMAScript techniques, along with deploying applications with AWS and Docker with this updated fifth edition.",
+        "publisher": "Packt Publishing", 
+        "year": "2020",
+        "isbn": "978-1838987572",
+        "book_category": "Full-stack",
+        "ratings": [2,3,3,4,5,2,3,3,2,4,4,5,4,3,5,4,2],
+        "reviews" : [
+            {"reviewer":"anon", "review": "Very useful and up to date"},
+        ]
+    },
+    {
+        "book_id": "1",
+        "authors": ["David Flanagan"], 
+        "title": "JavaScript:The Definitive Guide, 7th Edition", 
+        "description": "JavaScript is the programming language of the web and is used by more software developers today than any other programming language. For nearly 25 years this best seller has been the go-to guide for JavaScript programmers. The seventh edition is fully updated to cover the 2020 version of JavaScript, and new chapters cover classes, modules, iterators, generators, Promises, async/await, and metaprogramming. You'll find illuminating and engaging example code throughout. This book is for programmers who want to learn JavaScript and for web developers who want to take their understanding and mastery to the next level.",
+        "publisher": "O'Reilly", 
+        "year": "2020",
+        "isbn": "978-1491952023",
+        "book_category": "JavaScript",
+        "ratings": [5,4],
+        "reviews" : [
+            {"reviewer":"anon1", "review": "Great book, very comprehensive"},
+            {"reviewer":"anon2", "review": "Tells you everything you need to know about JavaScript"},
+        ]
+    }])
