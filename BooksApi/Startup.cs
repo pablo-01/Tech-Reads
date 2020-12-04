@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BooksApi.Extensions;
 using BooksApi.Interfaces;
 using BooksApi.Models;
 using BooksApi.Services;
@@ -33,38 +34,17 @@ namespace BooksApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddScoped<ITokenService, TokenService>();
-
-        // requires using Microsoft.Extensions.Options
-            services.Configure<BookstoreDatabaseSettings>(
-            Configuration.GetSection(nameof(BookstoreDatabaseSettings)));
-
-            services.AddSingleton<IBookstoreDatabaseSettings>(sp =>
-            sp.GetRequiredService<IOptions<BookstoreDatabaseSettings>>().Value);
-
-            services.AddSingleton<BookService>();
-
-            services.AddSingleton<UserService>();
-
+            // Add AppServices (from extentions)
+            services.AddAppServices(Configuration); 
 
             services.AddControllers();
 
             //Add CORS
             services.AddCors();
 
-            // setup authentication
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options => 
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters 
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["TokenKey"])),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
-                    };
-                });
+            // add Identity Services (fron extentions)
+            services.AddIdentityServices(Configuration);
+    
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,7 +55,7 @@ namespace BooksApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
 
             app.UseRouting();
