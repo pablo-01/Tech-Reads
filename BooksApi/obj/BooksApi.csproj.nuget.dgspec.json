@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/px/Desktop/repos/techreads/BooksApi/BooksApi.csproj": {}
+    "/media/data/Education/Uni/20-21/client-side/tech-reads/Tech-Reads/BooksApi/BooksApi.csproj": {}
   },
   "projects": {
-    "/home/px/Desktop/repos/techreads/BooksApi/BooksApi.csproj": {
+    "/media/data/Education/Uni/20-21/client-side/tech-reads/Tech-Reads/BooksApi/BooksApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/px/Desktop/repos/techreads/BooksApi/BooksApi.csproj",
+        "projectUniqueName": "/media/data/Education/Uni/20-21/client-side/tech-reads/Tech-Reads/BooksApi/BooksApi.csproj",
         "projectName": "BooksApi",
-        "projectPath": "/home/px/Desktop/repos/techreads/BooksApi/BooksApi.csproj",
+        "projectPath": "/media/data/Education/Uni/20-21/client-side/tech-reads/Tech-Reads/BooksApi/BooksApi.csproj",
         "packagesPath": "/home/px/.nuget/packages/",
-        "outputPath": "/home/px/Desktop/repos/techreads/BooksApi/obj/",
+        "outputPath": "/media/data/Education/Uni/20-21/client-side/tech-reads/Tech-Reads/BooksApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/px/.nuget/NuGet/NuGet.Config"
@@ -67,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/px/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.404/RuntimeIdentifierGraph.json"
         }
       }
     }
