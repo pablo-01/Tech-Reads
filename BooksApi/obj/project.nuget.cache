@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J5/5iTkVdwnf+WJbEPvAr/wlfjnG24ihSE+QqxtdKlV126lPdgsPFEvF3X1mNzWjULezWsWMZLYHMRirihrBVw==",
+  "dgSpecHash": "VRH4Owl4aDu1//P7q/HBKCZds5SOkcUvJOp7A1b5OpEAR1G/SredxjwZU81jIAFa9t+TyGCxR+ZYsvTtz2CW5g==",
   "success": true,
-  "projectFilePath": "/home/px/Desktop/repos/UNI/clien-side/Tech-Reads/BooksApi/BooksApi.csproj",
+  "projectFilePath": "/home/px/Desktop/repos/uni/client-side/bookstore/Tech-Reads/BooksApi/BooksApi.csproj",
   "expectedPackageFiles": [
     "/home/px/.nuget/packages/dnsclient/1.3.1/dnsclient.1.3.1.nupkg.sha512",
     "/home/px/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/3.1.10/microsoft.aspnetcore.authentication.jwtbearer.3.1.10.nupkg.sha512",
