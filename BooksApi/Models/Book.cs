@@ -3,13 +3,14 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Models
 {
+    [BsonIgnoreExtraElements]
     public class Book
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string _id { get; set; }
 
-        public string book_id { get; set; }
+        //public string book_id { get; set; }
 
         public string[] authors { get; set; }
 
@@ -23,9 +24,9 @@ namespace Models
 
         public string isbn { get; set; }
 
-        public string book_category { get; set; }
+        public string category { get; set; }
 
-        public decimal Price { get; set; }
+        //public decimal Price { get; set; }
 
         public decimal[] ratings { get; set; }
 

@@ -11,6 +11,7 @@ import { AccountService } from './_services/account.service';
 export class AppComponent implements OnInit {
   title = 'TechReads';
   users: any;
+  books: any;
 
   constructor(private http: HttpClient, private accoutService: AccountService) {}
 

@@ -11,6 +11,13 @@ import { NavComponent } from './nav/nav.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserProfileComponent } from './users/user-profile/user-profile.component';
+import { ListsComponent } from './lists/lists.component';
+import { ReadingHistoryComponent } from './reading-history/reading-history.component';
+import { BookListComponent } from './books/book-list/book-list.component';
+import { BookProfileComponent } from './books/book-profile/book-profile.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -19,6 +26,12 @@ import { RegisterComponent } from './register/register.component';
     NavComponent,
     HomeComponent,
     RegisterComponent,
+    UserListComponent,
+    UserProfileComponent,
+    ListsComponent,
+    ReadingHistoryComponent,
+    BookListComponent,
+    BookProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +39,10 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

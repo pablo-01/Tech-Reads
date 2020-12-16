@@ -40,7 +40,7 @@ namespace Controllers
         {
             _bookService.Create(book);
 
-            return CreatedAtRoute("GetBook", new { id = book.Id.ToString() }, book);
+            return CreatedAtRoute("GetBook", new { id = book._id.ToString() }, book);
         }
 
         [HttpPut("{id:length(24)}")]
@@ -68,7 +68,7 @@ namespace Controllers
                 return NotFound();
             }
 
-            _bookService.Remove(book.Id);
+            _bookService.Remove(book._id);
 
             return NoContent();
         }

@@ -17,5 +17,10 @@ namespace Models
         [BsonRepresentation(BsonType.Binary)]
         public byte[] PasswordSalt { get; set; }
 
+        // storage for books IDs, array, - books that users have read
+
+
+        // storage for user interests, array of book categories
+
     }
 }
