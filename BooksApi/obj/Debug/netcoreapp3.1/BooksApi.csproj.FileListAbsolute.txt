@@ -154,3 +154,5 @@
 /home/px/Desktop/repos/uni/client-side/bookstore/Tech-Reads/BooksApi/obj/Debug/netcoreapp3.1/BooksApi.dll
 /home/px/Desktop/repos/uni/client-side/bookstore/Tech-Reads/BooksApi/obj/Debug/netcoreapp3.1/BooksApi.pdb
 /home/px/Desktop/repos/uni/client-side/bookstore/Tech-Reads/BooksApi/obj/Debug/netcoreapp3.1/BooksApi.genruntimeconfig.cache
+/home/px/Desktop/repos/uni/client-side/bookstore/Tech-Reads/BooksApi/bin/Debug/netcoreapp3.1/SeedData/bookSeed.json
+/home/px/Desktop/repos/uni/client-side/bookstore/Tech-Reads/BooksApi/bin/Debug/netcoreapp3.1/SeedData/userSeed.json

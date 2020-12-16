@@ -22,7 +22,7 @@ namespace Controllers
         public ActionResult<List<Book>> Get() =>
             _bookService.Get();
 
-        [HttpGet("{id:length(24)}", Name = "GetBook")]
+        [HttpGet("{id}", Name = "GetBook")]
         public ActionResult<Book> Get(string id)
         {
             var book = _bookService.Get(id);
@@ -43,7 +43,7 @@ namespace Controllers
             return CreatedAtRoute("GetBook", new { id = book._id.ToString() }, book);
         }
 
-        [HttpPut("{id:length(24)}")]
+        [HttpPut("{id}")]
         public IActionResult Update(string id, Book bookIn)
         {
             var book = _bookService.Get(id);
@@ -58,7 +58,7 @@ namespace Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id:length(24)}")]
+        [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
             var book = _bookService.Get(id);

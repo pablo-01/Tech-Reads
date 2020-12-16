@@ -1,0 +1,48 @@
+[
+    {
+        "username": "anne",
+        "intrests": ["CSS", "Security", "HTML"],
+        "history": [
+            {
+                "bookId": "1",
+                "dateAdded": "ISODate(2020-12-16T18:30:03.802Z)"
+            },
+            {
+                "bookId": "3",
+                "dateAdded": "ISODate(2020-12-16T18:30:03.802Z)"
+            }
+        ]
+
+    },    
+    {
+        "username": "mike",
+        "intrests": ["React"],
+        "history": [
+            {
+                "bookId": "1",
+                "dateAdded": "ISODate(2020-12-16T18:30:03.802Z)"
+            },
+            {
+                "bookId": "3",
+                "dateAdded": "ISODate(2020-12-16T18:30:03.802Z)"
+            }
+        ]
+
+    },
+    {
+        "username": "lisa",
+        "intrests": ["JavaScript"],
+        "history": [
+            {
+                "bookId": "4",
+                "dateAdded": "ISODate(2020-12-16T18:30:03.802Z)"
+            },
+            {
+                "bookId": "7",
+                "dateAdded": "ISODate(2020-12-16T18:30:03.802Z)"
+            }
+        ]
+
+    }
+    
+]

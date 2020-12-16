@@ -7,7 +7,6 @@ namespace Models
     public class Book
     {
         [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
         public string _id { get; set; }
 
         //public string book_id { get; set; }
@@ -23,6 +22,8 @@ namespace Models
         public string year { get; set; }
 
         public string isbn { get; set; }
+
+        public string coverImageUrl { get; set; }
 
         public string category { get; set; }
 

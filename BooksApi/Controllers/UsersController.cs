@@ -36,9 +36,6 @@ namespace Controllers
             }
 
             return user;
-        }
-
-
-        
+        }        
     }
 }

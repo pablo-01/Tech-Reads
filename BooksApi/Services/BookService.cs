@@ -1,6 +1,6 @@
 using BooksApi.Models;
 using Models;
-using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +41,17 @@ namespace Services
 
         public void Remove(string id) => 
             _books.DeleteOne(book => book._id == id);
+
+        public bool CheckIfAnyExist() 
+        {
+            var count = _books.CountDocuments(new BsonDocument());
+            if (count == 0)
+            {
+                return false; 
+            }
+            return true;
+
+        }
         
     }
 }

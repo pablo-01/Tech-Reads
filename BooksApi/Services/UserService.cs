@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using BooksApi.Models;
 using Models;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace Services
@@ -43,6 +45,17 @@ namespace Services
 
         public AppUser GetByUsername(string username) =>
             _users.Find<AppUser>(user => user.username == username).FirstOrDefault();
+
+        public bool CheckIfAnyExist() 
+        {
+            var count = _users.CountDocuments(new BsonDocument());
+            if (count == 0)
+            {
+                return false; 
+            }
+            return true;
+
+        }
 
     }
 }
