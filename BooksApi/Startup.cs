@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BooksApi.Extensions;
 using BooksApi.Interfaces;
+using BooksApi.Middleware;
 using BooksApi.Models;
 using BooksApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -50,10 +51,14 @@ namespace BooksApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            // if (env.IsDevelopment())
+            // {
+            //     app.UseDeveloperExceptionPage();
+            // }
+
+            // using the Server Exception Middeware
+            app.UseMiddleware<ServerExceptionMiddleware>();
+
 
             //app.UseHttpsRedirection();
 

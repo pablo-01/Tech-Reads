@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 
@@ -18,6 +18,9 @@ import { ReadingHistoryComponent } from './reading-history/reading-history.compo
 import { BookListComponent } from './books/book-list/book-list.component';
 import { BookProfileComponent } from './books/book-profile/book-profile.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ErrorInteceptor } from './_httpInterceptors/error.interceptor';
+import { Err404Component } from './Errors/err404/err404.component';
+import { ServerSideErrComponent } from './Errors/server-side-err/server-side-err.component';
 
 
 @NgModule({
@@ -32,6 +35,8 @@ import { ToastrModule } from 'ngx-toastr';
     ReadingHistoryComponent,
     BookListComponent,
     BookProfileComponent,
+    Err404Component,
+    ServerSideErrComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,10 @@ import { ToastrModule } from 'ngx-toastr';
       positionClass: 'toast-bottom-right'
     })
   ],
-  providers: [],
+  providers: [
+    // providing wth error interceptior class, multi: true (to use multiple interceptors)
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInteceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
