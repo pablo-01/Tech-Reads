@@ -21,7 +21,7 @@ const routes: Routes = [
     children: [
       {path: 'users', component: UserListComponent},
       {path: 'books', component: BookListComponent}, // for book listing
-      {path: 'books:/id', component: BookProfileComponent}, // for book profile
+      {path: 'books/:_id', component: BookProfileComponent}, // for book profile
       {path: 'lists', component: ListsComponent}, // for lists, bookmarks 
     ]
   },

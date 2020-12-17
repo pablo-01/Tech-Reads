@@ -1,0 +1,11 @@
+<div class="card mb-4">
+    <div class="card-img-wrapper" routerLink='/books/{{book._id}}'>
+        <img class="card-img-top" src="{{book.coverImageUrl}}" alt="{{book.title}} cla">
+    </div>
+    <div class="card-body-p2">
+        <h5 class="card-title text-center mb-2"><i class="fa fa-book mr-2"></i>
+            {{book.title}}
+        </h5>
+        <p class="card-text text-muted text-center"> <span *ngFor="let author of book.authors">{{"| " + author + " |"}} </span></p>
+    </div>
+</div>

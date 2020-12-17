@@ -1,1 +1,34 @@
-<p>book-profile works!</p>
+<!-- using ngIf in order to prevent it loading before getting book -->
+<div *ngIf="book" class="row">
+    <!-- using grid system -->
+    <div class="col-5">
+        <div class="card">
+            <img class="card-img-top img-tumbnail" src="{{book.coverImageUrl}}" alt="{{book.title}}">
+            <div class="card-body">
+                <div style="text-align: center;">
+                    <strong>Rating:</strong>
+                    <p> Rating will go here:</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="btn-group d-flex">
+                    <button class="btn btn-primary">Read</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-7">
+        <tabset class="book-tabset">
+            <tab heading='Book Details'>
+                <h4><strong>{{book.title}}</strong></h4>
+                <p><span *ngFor="let author of book.authors">{{author + " "}} </span></p>
+                <p>{{book.description}}</p>
+                <h6><strong>Category:  </strong> <a href="#">{{book.category}}</a> | 
+                    <strong> Publisher:  </strong> {{book.publisher}}, {{book.year}} |
+                    <strong>ISBN: </strong> {{book.isbn}}
+                </h6>
+                <p></p>
+            </tab>
+        </tabset>
+    </div>
+</div>

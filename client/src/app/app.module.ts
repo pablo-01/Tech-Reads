@@ -21,6 +21,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { ErrorInteceptor } from './_httpInterceptors/error.interceptor';
 import { Err404Component } from './Errors/err404/err404.component';
 import { ServerSideErrComponent } from './Errors/server-side-err/server-side-err.component';
+import { BookCardComponent } from './books/book-card/book-card.component';
+import {TabsModule} from 'ngx-bootstrap/tabs';
 
 
 @NgModule({
@@ -37,6 +39,7 @@ import { ServerSideErrComponent } from './Errors/server-side-err/server-side-err
     BookProfileComponent,
     Err404Component,
     ServerSideErrComponent,
+    BookCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { ServerSideErrComponent } from './Errors/server-side-err/server-side-err
     BsDropdownModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
-    })
+    }),
+    TabsModule.forRoot()
   ],
   providers: [
     // providing wth error interceptior class, multi: true (to use multiple interceptors)
