@@ -27,7 +27,6 @@ namespace Controllers
             return Ok(await _userRepo.GetUsers());
         }
         
-            
 
         [Authorize]
         [HttpGet("{id:length(24)}")]
