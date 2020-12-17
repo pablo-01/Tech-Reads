@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BooksApi.Controllers;
+using BooksApi.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
@@ -11,24 +12,28 @@ namespace Controllers
 
     public class UsersController : BaseApiController
     {
-        private readonly UserService _userService;
+        private readonly IUserRepo _userRepo;
 
-        public UsersController(UserService userService)
+        public UsersController(IUserRepo userRepo)
         {
-            _userService = userService;
-            
+            _userRepo = userRepo;
+
         }
 
 
         [HttpGet]
-        public ActionResult<List<AppUser>> Get() =>
-            _userService.Get();
+        public async Task<ActionResult<List<AppUser>>> Get() 
+        {
+            return Ok(await _userRepo.GetUsers());
+        }
+        
+            
 
         [Authorize]
-        [HttpGet("{id:length(24)}", Name = "GetUser")]
-        public ActionResult<AppUser> Get(string id)
+        [HttpGet("{id:length(24)}")]
+        public async Task<ActionResult<AppUser>>  Get(string id)
         {
-            var user = _userService.Get(id);
+            var user = await _userRepo.GetUserById(id);
 
             if (user == null)
             {
@@ -36,6 +41,6 @@ namespace Controllers
             }
 
             return user;
-        }        
+        }
     }
 }

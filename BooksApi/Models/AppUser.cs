@@ -22,6 +22,8 @@ namespace Models
         public string[] intrests { get; set; }
 
         public ReadingHistory[] history { get; set; }
+        
+        public string photoUrl { get; set; }
     }
 
     public class ReadingHistory  

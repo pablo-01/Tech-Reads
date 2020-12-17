@@ -1,3 +1,4 @@
+using BooksApi.Data;
 using BooksApi.Interfaces;
 using BooksApi.Models;
 using BooksApi.Services;
@@ -13,6 +14,7 @@ namespace BooksApi.Extensions
         public static IServiceCollection AddAppServices(this IServiceCollection services, IConfiguration Configuration) 
         {
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserRepo, UserRepo>(); // WATCH
 
             // requires using Microsoft.Extensions.Options
             services.Configure<BookstoreDatabaseSettings>(
