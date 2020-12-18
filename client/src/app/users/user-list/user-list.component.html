@@ -1,1 +1,6 @@
-<p>user-list works!</p>
+<div class="row">
+    <div class="col-2" *ngFor="let user of readerUsers">
+        <!-- passing user as input property-->
+        <app-user-card [user]="user"></app-user-card>
+    </div>
+</div>

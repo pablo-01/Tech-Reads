@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using BooksApi.Controllers;
+using BooksApi.DTOs;
 using BooksApi.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,24 +15,28 @@ namespace Controllers
     public class UsersController : BaseApiController
     {
         private readonly IUserRepo _userRepo;
+        private readonly IMapper _mapper;
 
-        public UsersController(IUserRepo userRepo)
+        public UsersController(IMapper mapper, IUserRepo userRepo)
         {
+            _mapper = mapper;
             _userRepo = userRepo;
 
         }
 
 
         [HttpGet]
-        public async Task<ActionResult<List<AppUser>>> Get() 
+        public async Task<ActionResult<List<ReaderUserDTO>>> Get()
         {
-            return Ok(await _userRepo.GetUsers());
+            var users = await _userRepo.GetUsers();
+             var readerUsersToReturn = _mapper.Map<List<ReaderUserDTO>>(users);
+            return Ok(readerUsersToReturn);
         }
-        
 
-        [Authorize]
+
+        //[Authorize]
         [HttpGet("{id:length(24)}")]
-        public async Task<ActionResult<AppUser>>  Get(string id)
+        public async Task<ActionResult<ReaderUserDTO>> Get(string id)
         {
             var user = await _userRepo.GetUserById(id);
 
@@ -39,7 +45,7 @@ namespace Controllers
                 return NotFound();
             }
 
-            return user;
+            return _mapper.Map<ReaderUserDTO>(user);
         }
     }
 }

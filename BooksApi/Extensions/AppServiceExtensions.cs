@@ -1,4 +1,6 @@
+using AutoMapper;
 using BooksApi.Data;
+using BooksApi.Helpers;
 using BooksApi.Interfaces;
 using BooksApi.Models;
 using BooksApi.Services;
@@ -15,6 +17,8 @@ namespace BooksApi.Extensions
         {
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IUserRepo, UserRepo>(); // WATCH
+
+            services.AddAutoMapper(typeof(AutoMaperProfile).Assembly); // WATCH
 
             // requires using Microsoft.Extensions.Options
             services.Configure<BookstoreDatabaseSettings>(

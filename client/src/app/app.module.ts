@@ -23,6 +23,8 @@ import { Err404Component } from './Errors/err404/err404.component';
 import { ServerSideErrComponent } from './Errors/server-side-err/server-side-err.component';
 import { BookCardComponent } from './books/book-card/book-card.component';
 import {TabsModule} from 'ngx-bootstrap/tabs';
+import { UserCardComponent } from './users/user-card/user-card.component';
+import { JwtInterceptor } from './_httpInterceptors/jwt.interceptor';
 
 
 @NgModule({
@@ -40,6 +42,7 @@ import {TabsModule} from 'ngx-bootstrap/tabs';
     Err404Component,
     ServerSideErrComponent,
     BookCardComponent,
+    UserCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import {TabsModule} from 'ngx-bootstrap/tabs';
   ],
   providers: [
     // providing wth error interceptior class, multi: true (to use multiple interceptors)
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInteceptor, multi: true }
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInteceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

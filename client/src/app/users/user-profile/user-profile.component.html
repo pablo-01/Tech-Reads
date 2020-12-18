@@ -1,1 +1,42 @@
-<p>user-profile works!</p>
+<!-- using ngIf in order to prevent it loading before getting book -->
+<div *ngIf="readerUser" class="row">
+    <!-- using grid system -->
+    <div class="col-4">
+        <div class="card">
+            <img class="card-img-top img-tumbnail" src="{{readerUser.photoUrl || './assets/user.png' }}" alt="{{readerUser.username}}">
+            <div class="card-body">
+                <div style="text-align: center;">
+                    <strong>Username:</strong>
+                    <p> {{readerUser.username | titlecase}}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="card-footer">
+                <div style="text-align: center;">
+                    <strong>Reading interests:</strong>
+                    <p>
+                        <span *ngFor="let category of readerUser.intrests"><a href="#">{{category}} | </a></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <tabset class="user-tabset">
+            <tab heading='About'>
+                <h4><strong>{{readerUser.username | titlecase}}</strong></h4>
+            </tab>
+            <tab heading='Books I read'>
+                <br>
+                <h5>My Books</h5>
+                <div *ngIf="readingHistory" class="row">
+                    <!-- 2 columns per user out of 12 bootstrap columns -->
+                    <div *ngFor="let book of readingHistory" class="col-3">
+                        <!-- display each book in own card -->
+                        <app-book-card [book]="book"></app-book-card>
+                    </div>
+                </div>
+            </tab>
+        </tabset>
+    </div>
+</div>
