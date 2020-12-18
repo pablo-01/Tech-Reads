@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Models;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -10,6 +11,8 @@ namespace BooksApi.DTOs
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
+
+        [Required]
         public string username { get; set; }
 
         // storage for user interests, array of book categories

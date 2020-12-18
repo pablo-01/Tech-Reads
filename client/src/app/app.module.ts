@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,7 +26,7 @@ import {TabsModule} from 'ngx-bootstrap/tabs';
 import { UserCardComponent } from './users/user-card/user-card.component';
 import { JwtInterceptor } from './_httpInterceptors/jwt.interceptor';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
-
+import { InputTextComponent } from './_forms/input-text/input-text.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +45,7 @@ import { UserEditComponent } from './users/user-edit/user-edit.component';
     BookCardComponent,
     UserCardComponent,
     UserEditComponent,
+    InputTextComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,11 +53,12 @@ import { UserEditComponent } from './users/user-edit/user-edit.component';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
   ],
   providers: [
     // providing wth error interceptior class, multi: true (to use multiple interceptors)
