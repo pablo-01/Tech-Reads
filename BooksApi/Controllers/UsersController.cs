@@ -47,5 +47,19 @@ namespace Controllers
 
             return _mapper.Map<ReaderUserDTO>(user);
         }
+
+
+        [HttpGet("{username}")]
+        public async Task<ActionResult<ReaderUserDTO>> GetByName(string username) 
+        {
+            var user = await _userRepo.GetUserByName(username);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return _mapper.Map<ReaderUserDTO>(user);
+        }
     }
 }

@@ -7,9 +7,11 @@ import { ServerSideErrComponent } from './Errors/server-side-err/server-side-err
 import { HomeComponent } from './home/home.component';
 import { ListsComponent } from './lists/lists.component';
 import { UserCardComponent } from './users/user-card/user-card.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserProfileComponent } from './users/user-profile/user-profile.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { EnsureUpdatesGuard } from './_guards/ensure-updates.guard';
 
 // specify routes 
 const routes: Routes = [
@@ -23,6 +25,9 @@ const routes: Routes = [
     children: [
       {path: 'users', component: UserListComponent}, // for user listing
       {path: 'users/:id', component: UserProfileComponent}, // for user profile
+
+      // for user profile edit, using ensure updates guard
+      {path: 'user/edit', component: UserEditComponent, canDeactivate: [EnsureUpdatesGuard]},
       {path: 'books', component: BookListComponent}, // for book listing
       {path: 'books/:_id', component: BookProfileComponent}, // for book profile
       {path: 'lists', component: ListsComponent}, // for lists, bookmarks 

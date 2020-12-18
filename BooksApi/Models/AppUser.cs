@@ -22,6 +22,9 @@ namespace Models
         // storage for user interests, array of book categories
         public string[] intrests { get; set; }
 
+        // user profile info
+        public string info { get; set; }
+
         public ICollection<ReadingHistory> history { get; set; }
         
         public string photoUrl { get; set; }

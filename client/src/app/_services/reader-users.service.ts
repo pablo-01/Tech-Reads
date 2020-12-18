@@ -20,6 +20,10 @@ export class ReaderUsersService {
 
   // get one user by id from api
   getUser(id: string) {
-    return this.http.get<readerUser>(this.baseUrl + 'users/' + id)
+    return this.http.get<readerUser>(this.baseUrl + 'users/' + id);
+  }
+
+  getUserByName(username: string) {
+    return this.http.get<readerUser>(this.baseUrl + 'users/' + username);
   }
 }

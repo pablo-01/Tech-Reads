@@ -25,6 +25,7 @@ import { BookCardComponent } from './books/book-card/book-card.component';
 import {TabsModule} from 'ngx-bootstrap/tabs';
 import { UserCardComponent } from './users/user-card/user-card.component';
 import { JwtInterceptor } from './_httpInterceptors/jwt.interceptor';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { JwtInterceptor } from './_httpInterceptors/jwt.interceptor';
     ServerSideErrComponent,
     BookCardComponent,
     UserCardComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,

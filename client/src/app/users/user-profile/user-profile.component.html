@@ -6,17 +6,9 @@
             <img class="card-img-top img-tumbnail" src="{{readerUser.photoUrl || './assets/user.png' }}" alt="{{readerUser.username}}">
             <div class="card-body">
                 <div style="text-align: center;">
+                    <hr>
                     <strong>Username:</strong>
                     <p> {{readerUser.username | titlecase}}</p>
-                </div>
-            </div>
-            <hr>
-            <div class="card-footer">
-                <div style="text-align: center;">
-                    <strong>Reading interests:</strong>
-                    <p>
-                        <span *ngFor="let category of readerUser.intrests"><a href="#">{{category}} | </a></span>
-                    </p>
                 </div>
             </div>
         </div>
@@ -24,7 +16,13 @@
     <div class="col-8">
         <tabset class="user-tabset">
             <tab heading='About'>
-                <h4><strong>{{readerUser.username | titlecase}}</strong></h4>
+                <h4><strong>About {{readerUser.username | titlecase}}</strong></h4>
+                <p>{{readerUser.info}}</p>
+                <hr>
+                <h4><strong>Favorite categories</strong></h4>
+                <p>
+                    <span *ngFor="let category of readerUser.intrests"><a href="#">{{category}} | </a></span>
+                </p>
             </tab>
             <tab heading='Books I read'>
                 <br>

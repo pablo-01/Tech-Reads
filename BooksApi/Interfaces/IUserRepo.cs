@@ -11,5 +11,7 @@ namespace BooksApi.Interfaces
          Task<IEnumerable<AppUser>> GetUsers();
          Task<AppUser> GetUserById(string id);
 
+         Task<AppUser> GetUserByName(string username);
+
     }
 }

@@ -1,0 +1,44 @@
+<!-- using ngIf in order to prevent it loading before getting book -->
+<div *ngIf="readerUser" class="row">
+    <div class="col-4">
+        <h1>Profile</h1>
+    </div>
+    <div class="col-8">
+        <div *ngIf="formEdit.dirty" class="alert alert-info" style="text-align: center;">
+            Please save to keep the changes
+        </div>
+    </div>
+    <!-- using grid system -->
+    <div class="col-4">
+        <div class="card">
+            <img class="card-img-top img-tumbnail" src="{{readerUser.photoUrl || './assets/user.png' }}" alt="{{readerUser.username}}">
+            <div class="card-body">
+                <div style="text-align: center;">
+                    <strong>Username:</strong>
+                    <p> {{readerUser.username | titlecase}}</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button form="formEdit" class="btn-success btn-block" [disabled]="!formEdit.dirty">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <tabset class="user-tabset">
+            <tab heading='About'>
+                <form id="formEdit" #formEdit="ngForm" (ngSubmit)="updateUser()">
+                    <h4><strong>About {{readerUser.username | titlecase}}</strong></h4>
+                    <textarea class="form-control" rows="6" [(ngModel)]="readerUser.info" name="info"></textarea>
+                    <hr>
+                    <h4><strong>Favorite categories</strong></h4>
+                    <p>
+                        <span *ngFor="let category of readerUser.intrests"><a href="#">{{category}} | </a></span>
+                    </p>
+                </form>
+            </tab>
+            <tab heading='Change Photo'>
+                <p>image edit placeholder</p>
+            </tab>
+        </tabset>
+    </div>
+</div>

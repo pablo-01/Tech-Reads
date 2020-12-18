@@ -16,6 +16,8 @@ namespace BooksApi.DTOs
         public string[] intrests { get; set; }
 
         public ICollection<ReadingHistory> history { get; set; }
+
+        public string info { get; set; }
         
         public string photoUrl { get; set; }
     }

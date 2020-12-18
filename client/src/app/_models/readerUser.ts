@@ -5,5 +5,6 @@ export interface readerUser {
     username: string;
     intrests: string[];
     history: History[];
+    info: string;
     photoUrl: string;
   }

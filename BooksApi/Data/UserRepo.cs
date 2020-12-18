@@ -19,6 +19,11 @@ namespace BooksApi.Data
             return await Task.FromResult(_uService.Get(id));
         }
 
+        public async Task<AppUser> GetUserByName(string username)
+        {
+            return await  Task.FromResult(_uService.GetByUsername(username));
+        }
+
         public async Task<IEnumerable<AppUser>> GetUsers()
         {
             return await Task.FromResult( _uService.Get());

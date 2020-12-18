@@ -12,7 +12,8 @@
                 "dateAdded": "ISODate(2020-12-16T18:30:03.802Z)"
             }
         ],
-        "photoUrl": "https://randomuser.me/api/portraits/men/93.jpg"
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris accumsan fermentum tempor. Fusce porta ornare mauris non suscipit. Phasellus bibendum cursus blandit. Praesent vel lectus eu leo accumsan ultricies. Mauris vestibulum, lacus at pretium ultrices, sapien odio malesuada ligula, non tincidunt mauris tellus a erat. Vestibulum diam sem, placerat sit amet quam a, lacinia tempus ipsum. Pellentesque gravida vehicula nisl, id volutpat ex commodo ac. Praesent magna tortor, molestie at sapien at, rutrum sodales nunc. Integer non nisl pharetra, porttitor libero nec, pulvinar dolor. Fusce ac vestibulum magna. Integer euismod eu nisi eu sodales. ",
+        "photoUrl": "https://randomuser.me/api/portraits/women/21.jpg"
 
     },    
     {
@@ -28,6 +29,7 @@
                 "dateAdded": "ISODate(2020-12-16T18:30:03.802Z)"
             }
         ],
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris accumsan fermentum tempor. Fusce porta ornare mauris non suscipit. Phasellus bibendum cursus blandit. Praesent vel lectus eu leo accumsan ultricies. Mauris vestibulum, lacus at pretium ultrices, sapien odio malesuada ligula, non tincidunt mauris tellus a erat. Vestibulum diam sem, placerat sit amet quam a, lacinia tempus ipsum. Pellentesque gravida vehicula nisl, id volutpat ex commodo ac. Praesent magna tortor, molestie at sapien at, rutrum sodales nunc. Integer non nisl pharetra, porttitor libero nec, pulvinar dolor. Fusce ac vestibulum magna. Integer euismod eu nisi eu sodales. ",
         "photoUrl": "https://randomuser.me/api/portraits/men/87.jpg"
 
     },
@@ -44,7 +46,8 @@
                 "dateAdded": "ISODate(2020-12-16T18:30:03.802Z)"
             }
         ],
-        "photoUrl": "https://randomuser.me/api/portraits/women/54.jpg"
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris accumsan fermentum tempor. Fusce porta ornare mauris non suscipit. Phasellus bibendum cursus blandit. Praesent vel lectus eu leo accumsan ultricies. Mauris vestibulum, lacus at pretium ultrices, sapien odio malesuada ligula, non tincidunt mauris tellus a erat. Vestibulum diam sem, placerat sit amet quam a, lacinia tempus ipsum. Pellentesque gravida vehicula nisl, id volutpat ex commodo ac. Praesent magna tortor, molestie at sapien at, rutrum sodales nunc. Integer non nisl pharetra, porttitor libero nec, pulvinar dolor. Fusce ac vestibulum magna. Integer euismod eu nisi eu sodales. ",
+        "photoUrl": "https://randomuser.me/api/portraits/women/52.jpg"
 
     }
     
