@@ -23,7 +23,14 @@ export class ReaderUsersService {
     return this.http.get<readerUser>(this.baseUrl + 'users/' + id);
   }
 
+  // get readerUser by username  TODO - WATCH for conflict
   getUserByName(username: string) {
     return this.http.get<readerUser>(this.baseUrl + 'users/' + username);
   }
+
+  // user update method; passing in readerUser
+  updateUser(user: readerUser) {
+    return this.http.put(this.baseUrl + 'users', user);
+  }
+
 }

@@ -33,8 +33,8 @@ namespace Services
             return user;
         }
 
-        public void Update(string id, AppUser userIn) =>
-            _users.ReplaceOne(user => user.Id == id, userIn);
+        public virtual void Update(AppUser userIn) =>
+            _users.ReplaceOne(user => user.username == userIn.username, userIn);
 
         public void Remove(AppUser userIn) =>
             _users.DeleteOne(user => user.Id == userIn.Id);

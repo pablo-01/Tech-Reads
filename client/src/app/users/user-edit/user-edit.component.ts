@@ -47,10 +47,12 @@ export class UserEditComponent implements OnInit {
 
   // updating readerUser model
   updateUser() {
-    console.log(this.readerUser);
-    this.toastr.success("Changes were saved");
-    // reset form after update with new data
-    this.formEdit.reset(this.readerUser);
+    this.readerUserService.updateUser(this.readerUser).subscribe(() => {
+      // notification
+      this.toastr.success("Changes were saved");
+      // reset form after update with new data
+      this.formEdit.reset(this.readerUser);
+    })
   }
 
 }

@@ -10,6 +10,7 @@ namespace BooksApi.Helpers
         {
             // map model to dto
             CreateMap<AppUser, ReaderUserDTO>();
+            CreateMap<UserUpdateDTO, AppUser>();
         }
     }
 }

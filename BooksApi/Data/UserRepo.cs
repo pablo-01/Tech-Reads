@@ -34,9 +34,9 @@ namespace BooksApi.Data
             return await Task.FromResult( _uService.Create(user));
         }
 
-        public void UpdateProfile(string id, AppUser user)
+        public void UpdateProfile(AppUser user)
         {
-            _uService.Update(id, user);
+            _uService.Update(user);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace BooksApi.Interfaces
 {
     public interface IUserRepo
     {
-         void UpdateProfile(string id, AppUser user);
+         void UpdateProfile(AppUser user);
          Task<AppUser> Save(AppUser user);
          Task<IEnumerable<AppUser>> GetUsers();
          Task<AppUser> GetUserById(string id);
