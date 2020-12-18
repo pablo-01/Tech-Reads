@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../_services/account.service';
 
 @Component({
@@ -10,12 +12,17 @@ import { AccountService } from '../_services/account.service';
 export class RegisterComponent implements OnInit {
   // Output property - emit from child to parent -for registerSwith state
   @Output() registrationCancel = new EventEmitter();
-  // register model
-  model: any = {};
-  // register form 
-  registrationForm: FormGroup;
 
-  constructor(private accountService: AccountService) { }
+  // for register form 
+  registrationForm: FormGroup;
+  // error aray
+  validationErr: string[] = [];
+
+  // inject services
+  constructor(private toastr: ToastrService ,
+    private accountService: AccountService, 
+    private fb: FormBuilder,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -25,11 +32,12 @@ export class RegisterComponent implements OnInit {
   // initilize registrationForm method
   // names must match to formControlName in view
   // set validation
+  // using form builder
   initForm() {
-    this.registrationForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
-      passwordConfirm: new FormControl('', [Validators.required, this.compareInput('password')])
+    this.registrationForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]],
+      passwordConfirm: ['', [Validators.required, this.compareInput('password')]]
     });
   }
 
@@ -39,7 +47,6 @@ export class RegisterComponent implements OnInit {
   ////
 
   // Accesing control that validator can be attached to (passwordConfirm control)
-  // 
   compareInput(compareTo: string): ValidatorFn {
     return (control: AbstractControl) => {
       return control?.value === control?.parent?.controls[compareTo].value ? null: {doesMatch: true}
@@ -48,12 +55,12 @@ export class RegisterComponent implements OnInit {
 
   // register method - using account service
   register() {
-    console.log(this.registrationForm.value)
-    // this.accountService.register(this.model).subscribe(res=> {
-    //   this.cancelRegister();
-    // }, error => {
-    //   console.log(error);
-    // })
+    //console.log(this.registrationForm.value)
+    this.accountService.register(this.registrationForm.value).subscribe(res=> {
+      this.router.navigateByUrl('/books');
+    }, error => {
+      this.validationErr = error;
+    })
   }
 
   cancelRegister() {
