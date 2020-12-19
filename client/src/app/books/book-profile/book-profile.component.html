@@ -28,8 +28,16 @@
                     <strong>ISBN: </strong> {{book.isbn}}
                 </h6>
                 <br>
-                <h4>Bar Chart will go here</h4>
-                <p>Distributon of ratings by year? ie. how many people added/reviewed book by year?</p>
+                <h4>Reading by year distribution</h4>
+                <p>How many readers added this book every year?</p>
+                <ngx-charts-pie-chart 
+                    [results]="seedData"
+                    [legend]="false"
+                    [legendTitle]="'Book read times a year'" 
+                    [view]="[600,300]"
+                    [labels]="true" >
+                </ngx-charts-pie-chart>
+                
 
             </tab>
             <tab heading='Reviews'>

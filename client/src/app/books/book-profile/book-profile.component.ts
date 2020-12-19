@@ -23,6 +23,20 @@ export class BookProfileComponent implements OnInit {
   // user from account
   user: User;
 
+
+  // ratings temp data
+
+  seedData = [
+    {name: "2012", value: 3},
+    {name: "2013", value: 7},
+    {name: "2014", value: 13},
+    {name: "2015", value: 7},
+    {name: "2016", value: 23},
+    {name: "2017", value: 37},
+    {name: "2018", value: 12},
+    {name: "2019", value: 22}
+  ];
+
   constructor(private accService: AccountService,
     private route: ActivatedRoute, 
     private bookService: BooksService, 
@@ -39,6 +53,7 @@ export class BookProfileComponent implements OnInit {
   loadBook() {
     this.bookService.getBook(this.route.snapshot.paramMap.get('_id')).subscribe(book => {
       this.book = book;
+
     })
   }
 
