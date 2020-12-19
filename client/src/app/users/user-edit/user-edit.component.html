@@ -31,6 +31,12 @@
                     <textarea class="form-control" rows="6" [(ngModel)]="readerUser.info" name="info"></textarea>
                     <hr>
                     <h4><strong>Favorite categories</strong></h4>
+                    <div *ngFor="let category of readerUser.intrests" class="user-interests">
+                        <label>
+                            <input type="checkbox">
+                            {{category}}
+                        </label>
+                    </div>
                     <p>
                         <span *ngFor="let category of readerUser.intrests"><a href="#">{{category}} | </a></span>
                     </p>

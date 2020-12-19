@@ -4,6 +4,7 @@ using Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using BooksApi.Controllers;
+using System.Collections;
 
 namespace Controllers
 {
@@ -71,6 +72,16 @@ namespace Controllers
             _bookService.Remove(book._id);
 
             return NoContent();
+        }
+
+
+        [HttpGet]
+        [Route("categories")]
+        public List<string> GetCategories() {
+            List<string> categories = _bookService.GetCategories();
+            HashSet<string> hashset = new HashSet<string>();
+            categories.RemoveAll(x=> !hashset.Add(x));
+            return categories;
         }
     }
 }

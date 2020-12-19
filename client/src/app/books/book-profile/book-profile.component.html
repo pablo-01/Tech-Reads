@@ -28,17 +28,28 @@
                     <strong>ISBN: </strong> {{book.isbn}}
                 </h6>
                 <br>
-                <h4>Reading by year distribution</h4>
-                <p>How many readers added this book every year?</p>
-                <ngx-charts-pie-chart 
+                <h4>Book rating distribution</h4>
+                <br>
+                <ngx-charts-bar-vertical
                     [results]="seedData"
+                    [xAxisLabel]="'Stars'"
+                    [legendTitle]="'Rating distribution chart'"
+                    [yAxisLabel]="'Ocurances'"
                     [legend]="false"
-                    [legendTitle]="'Book read times a year'" 
-                    [view]="[600,300]"
-                    [labels]="true" >
-                </ngx-charts-pie-chart>
-                
-
+                    [showXAxisLabel]="true"
+                    [showYAxisLabel]="true"
+                    [xAxis]="true"
+                    [yAxis]="true"
+                    [yAxisTickFormatting]= "formatNumbers"
+                    [gradient]="false"
+                    [animations]="false"
+                    [tooltipDisabled]="true"
+                    [yScaleMax] = 5
+                    [yScaleMin] = 0
+                    [maxXAxisTickLength] = 5
+                    [trimXAxisTicks] = "false"
+                    >
+                </ngx-charts-bar-vertical>
             </tab>
             <tab heading='Reviews'>
                 <h4><strong>{{book.title}}</strong></h4>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { take } from 'rxjs/operators';
+import { findIndex, take } from 'rxjs/operators';
 import { Book } from 'src/app/_models/books';
 import { readerUser } from 'src/app/_models/readerUser';
 import { User } from 'src/app/_models/user';
@@ -23,19 +23,11 @@ export class BookProfileComponent implements OnInit {
   // user from account
   user: User;
 
+  categoryCount: any;
 
-  // ratings temp data
 
-  seedData = [
-    {name: "2012", value: 3},
-    {name: "2013", value: 7},
-    {name: "2014", value: 13},
-    {name: "2015", value: 7},
-    {name: "2016", value: 23},
-    {name: "2017", value: 37},
-    {name: "2018", value: 12},
-    {name: "2019", value: 22}
-  ];
+  // ratings data for chart
+  seedData: any[] = [];
 
   constructor(private accService: AccountService,
     private route: ActivatedRoute, 
@@ -47,13 +39,15 @@ export class BookProfileComponent implements OnInit {
   ngOnInit(): void {
     this.loadBook();
     this.loadReaderUser();
+    
   }
+
 
   // load book by _id; using route from routing
   loadBook() {
     this.bookService.getBook(this.route.snapshot.paramMap.get('_id')).subscribe(book => {
       this.book = book;
-
+      this.getRatingsData();
     })
   }
 
@@ -89,4 +83,26 @@ export class BookProfileComponent implements OnInit {
     })
   }
 
+  // extract data for rating distributuin chart
+  // get occurances
+  getRatingsData() {
+    var occurance = this.book.ratings.reduce(function(occ, item) {
+      occ[item] = (occ[item] || 0) + 1;
+      return occ;
+    }, {});
+    // assign
+    this.categoryCount = occurance;
+
+    // convert to format required by ngx-charts
+    Object.entries(this.categoryCount).map(([key, value]) =>  {
+      this.seedData.push({name: key, value: value})
+      return this.seedData;
+    });
+  }
+
+  // format to remove decimal ppint on y axis 
+  formatNumbers = (e: number) => {
+    return e;
+
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, NgForm, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { readerUser } from 'src/app/_models/readerUser';
@@ -10,7 +10,7 @@ import { ReaderUsersService } from 'src/app/_services/reader-users.service';
 
 //// 
 //User profile edit component
-//TODO - add alert when leaving page wile changes pending
+//TODO - add alert when leaving/closing page window wile changes pending
 ////
 @Component({
   selector: 'app-user-edit',
@@ -29,7 +29,10 @@ export class UserEditComponent implements OnInit {
 
   // inject services
   // access user in component out of observable
-  constructor(private accService: AccountService, private toastr: ToastrService ,private readerUserService: ReaderUsersService) {
+  constructor(private accService: AccountService, 
+              private toastr: ToastrService, 
+              private readerUserService: ReaderUsersService, 
+              private fb: FormBuilder) {
     this.accService.currentUser$.pipe(take(1)).subscribe(user => this.user = user); // current user from account service
    }
 
@@ -42,6 +45,7 @@ export class UserEditComponent implements OnInit {
   loadReaderUser() {
     this.readerUserService.getUser(this.user.username).subscribe(user => {
       this.readerUser = user;
+      console.log(this.readerUser)
     })
   }
 

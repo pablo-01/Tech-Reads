@@ -2,6 +2,7 @@ using BooksApi.Models;
 using Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -23,6 +24,23 @@ namespace Services
 
         public List<Book> Get() =>
             _books.Find(book => true).ToList();
+
+
+        // This is not a best way of doing that
+        // categories should have its own model TODO
+        public List<string> GetCategories() 
+        {
+
+
+            var categories = new List<string>();
+            var books = _books.Find(book => true).ToList();
+            foreach(var book in books) {
+                categories.Add(book.category);
+            }
+
+            return categories;
+        }
+
 
         public Book Get(string id) =>
             _books.Find<Book>(book => book._id == id).FirstOrDefault();
