@@ -23,7 +23,7 @@ export class UserProfileComponent implements OnInit {
   // loading user profile
   loadUser() {
     // 
-    this.userService.getUser(this.route.snapshot.paramMap.get('id')).subscribe(user => {
+    this.userService.getUser(this.route.snapshot.paramMap.get('username')).subscribe(user => {
       console.log(user);
       this.readerUser = user;
       this.loadUserBooks();

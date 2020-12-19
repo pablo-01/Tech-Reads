@@ -40,7 +40,7 @@ export class UserEditComponent implements OnInit {
 
   // load reader user data
   loadReaderUser() {
-    this.readerUserService.getUserByName(this.user.username).subscribe(user => {
+    this.readerUserService.getUser(this.user.username).subscribe(user => {
       this.readerUser = user;
     })
   }

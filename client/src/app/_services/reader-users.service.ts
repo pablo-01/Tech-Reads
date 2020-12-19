@@ -18,19 +18,21 @@ export class ReaderUsersService {
     return this.http.get<readerUser[]>(this.baseUrl + 'users');
   }
 
-  // get one user by id from api
-  getUser(id: string) {
-    return this.http.get<readerUser>(this.baseUrl + 'users/' + id);
-  }
+  // // get one user by id from api
+  // getUser(id: string) {
+  //   return this.http.get<readerUser>(this.baseUrl + 'users/' + id);
+  // }
 
   // get readerUser by username  TODO - WATCH for conflict
-  getUserByName(username: string) {
+  getUser(username: string) {
     return this.http.get<readerUser>(this.baseUrl + 'users/' + username);
   }
 
   // user update method; passing in readerUser
   updateUser(user: readerUser) {
-    return this.http.put(this.baseUrl + 'users', user);
+    console.log("user object in updateUser() in reader-user service is: ")
+    console.log(user);
+    return this.http.put(this.baseUrl + 'users/', user);
   }
 
 }

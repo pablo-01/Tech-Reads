@@ -38,7 +38,7 @@ namespace Controllers
             return Ok(readerUsersToReturn);
         }
 
-        // get user by id
+        //get user by id
         //[Authorize]
         [HttpGet("{id:length(24)}")]
         public async Task<ActionResult<ReaderUserDTO>> Get(string id)

@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Models;
+
 namespace BooksApi.DTOs
 {
     ////
@@ -8,5 +11,7 @@ namespace BooksApi.DTOs
     {
         public string info { get; set; }
         public string[] intrests { get; set; }
+
+        public ICollection<ReadingHistory> history { get; set; }     
     }
 }

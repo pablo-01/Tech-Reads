@@ -73,7 +73,8 @@ namespace BooksApi.Controllers
              return new UserDTO
             {
                 username = user.username,
-                token = _tokenService.CreateToken(user)
+                token = _tokenService.CreateToken(user),
+                photoUrl = user?.photoUrl
             };
 
         }

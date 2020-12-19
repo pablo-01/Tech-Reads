@@ -24,9 +24,9 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {path: 'users', component: UserListComponent}, // for user listing
-      {path: 'users/:id', component: UserProfileComponent}, // for user profile
+      {path: 'users/:username', component: UserProfileComponent}, // for user profile
 
-      // for user profile edit, using ensure updates guard
+      // for user profile edit, using ensure updates
       {path: 'user/edit', component: UserEditComponent, canDeactivate: [EnsureUpdatesGuard]},
       {path: 'books', component: BookListComponent}, // for book listing
       {path: 'books/:_id', component: BookProfileComponent}, // for book profile
