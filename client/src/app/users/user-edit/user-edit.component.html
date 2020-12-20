@@ -26,24 +26,51 @@
     <div class="col-8">
         <tabset class="user-tabset">
             <tab heading='About'>
-                <form id="formEdit" #formEdit="ngForm" (ngSubmit)="updateUser()">
+                <form id="formEdit" #formEdit="ngForm" (ngSubmit)="addUserInterest()">
+                    <!-- FIX TODO updateUser function - disabled button if new category not added -->
                     <h4><strong>About {{readerUser.username | titlecase}}</strong></h4>
                     <textarea class="form-control" rows="6" [(ngModel)]="readerUser.info" name="info"></textarea>
                     <hr>
                     <h4><strong>Favorite categories</strong></h4>
-                    <div *ngFor="let category of readerUser.intrests" class="user-interests">
+                    <div *ngFor="let category of readerUser.intrests" class="form-check form-check-inline">
                         <label>
-                            <input type="checkbox">
+                            <input type="checkbox" checked disabled>
                             {{category}}
                         </label>
                     </div>
-                    <p>
-                        <span *ngFor="let category of readerUser.intrests"><a href="#">{{category}} | </a></span>
-                    </p>
-                </form>
+                    <br>
+                    <div>
+                    <h4><strong>Add Interests</strong></h4>
+                    <select class="form-select" [(ngModel)]="newCategories" name="selectedOption">
+                        <option [ngValue]="null" >Select an Interest</option>
+                        <option *ngFor="let category of bookCategories">{{category}} </option>
+                    </select>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                      <!-- <div *ngFor="let category of bookCategories" class="form-check-inline">
+                        <label>
+                            <input
+                                name="{{category}}"
+                                value="{{category}}"
+                                class="form-check-input" 
+                                type="checkbox"
+                                (change)="changeSelection()">
+                            {{category}}
+                        </label>
+                    </div> -->
+                    </div>
+               </form>
             </tab>
             <tab heading='Change Photo'>
-                <p>image edit placeholder</p>
+                <p>image edit/uplad functonality will go here -  placeholder</p>
             </tab>
         </tabset>
     </div>

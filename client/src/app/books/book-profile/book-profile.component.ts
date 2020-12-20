@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { findIndex, take } from 'rxjs/operators';
 import { Book } from 'src/app/_models/books';
 import { readerUser } from 'src/app/_models/readerUser';
+import { Review } from 'src/app/_models/review';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { BooksService } from 'src/app/_services/books.service';
@@ -29,6 +30,11 @@ export class BookProfileComponent implements OnInit {
   // ratings data for chart
   seedData: any[] = [];
 
+  // review input
+
+  newReview: string;
+
+
   constructor(private accService: AccountService,
     private route: ActivatedRoute, 
     private bookService: BooksService, 
@@ -52,10 +58,14 @@ export class BookProfileComponent implements OnInit {
   }
 
 
-
+  //  
   addBookToModel() {
     // TODO FIX CHECK if in history aleardy
-    if (this.book._id in this.readerUser.history) {
+    let id = this.book._id;
+    let val = this.readerUser.history.filter(function(read) {
+      return read.bookId == id;
+    });
+    if (val.length > 0 ) {
       this.toastr.error("Book already in history");
     }
     else {
@@ -72,6 +82,7 @@ export class BookProfileComponent implements OnInit {
     console.log(this.readerUser.history);
     this.readerUserService.updateUser(this.readerUser).subscribe(() => {
     this.toastr.success("Saved to history");
+    this.ngOnInit();
     })
   }
 
@@ -103,6 +114,34 @@ export class BookProfileComponent implements OnInit {
   // format to remove decimal ppint on y axis 
   formatNumbers = (e: number) => {
     return e;
+
+  }
+
+
+  reviewAddAndUpdate() {
+    this.book.reviews.push({reviewer: this.user.username, review: this.newReview})
+    console.log(this.book);
+    
+    
+    this.bookService.bookUpdate(this.book._id ,this.book).subscribe(() => {
+       this.toastr.success('Review Added');
+     })
+
+    //this.bookService.bookUpdate(this.book);
+
+
+    /// TODO implement bookUpdate()
+
+
+    // console.log('Existing reviews');
+    // console.log(this.book.reviews);
+
+    // // username of logged in user
+    // console.log('logged in user');
+    // console.log(this.readerUser.username);
+
+    // console.log(this.newReview);
+    // this.toastr.success('Review added');
 
   }
 }

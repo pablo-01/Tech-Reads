@@ -58,14 +58,24 @@
                     <strong> Publisher:  </strong> {{book.publisher}}, {{book.year}} |
                     <strong>ISBN: </strong> {{book.isbn}}
                 </h6>
-                <h4>Add Review</h4>
-                <textarea></textarea>
-                <br>
-                <h5>User reviews</h5>
-                <div *ngFor="let review of book.reviews">
-                    <h6>Review by <strong>{{review.reviewer}}</strong></h6>
-                    <p>{{review.review}}</p>
+                <div>
+                    <form #formEdit="ngForm" class="mb-2" (ngSubmit)="reviewAddAndUpdate()">
+                        <div>
+                        <h4>Add Review</h4>
+                        <textarea [(ngModel)]="newReview" name="review" rows="5" class="form-control"></textarea>
+                        </div>
+                        <br>
+                        <button class="btn-success form-control">Add Review</button>
+                        <br>
+                    </form>
+                    <h5>User reviews</h5>
+                    <div *ngFor="let review of book.reviews">
+                        <h6>Review by <strong>{{review.reviewer}}</strong></h6>
+                        <p>{{review.review}}</p>
+                    </div>
+
                 </div>
+                
             </tab>
         </tabset>
     </div>
