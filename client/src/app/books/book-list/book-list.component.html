@@ -5,7 +5,7 @@
             <option [ngValue]="null">Category</option>
             <option  *ngFor="let category of bookCategories">{{category}} </option>
         </select>
-        <button   (click)="filterByCategory()" type="submit" class="btn-success ml-2">Filter</button>
+        <button  (click)="filterByCategory()" type="submit" class="btn-success ml-2">Filter</button>
     </form>
     
 </div>
