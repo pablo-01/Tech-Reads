@@ -31,6 +31,12 @@ export class BookListComponent implements OnInit {
 // searchTerm storage
   serachTerm = '';
 
+// filter 
+
+ bookAuthors: any;
+
+
+
 
   ////
   // Constructor
@@ -64,6 +70,23 @@ export class BookListComponent implements OnInit {
     this.bookService.getBookCategories().subscribe(categories => {
       this.bookCategories = categories;
     })
+    this.getAuthors();
+  }
+
+  //// Note:
+  // get authos - TODO improve 
+  // (refactor: use Mongodb $text search for all of the filtering and searching funconality)
+  // to future-proof this 
+  // (keping in mind that in "production" there will be more books and pagination with calls to DB ) 
+  ////
+
+
+  // get author list
+  getAuthors() {
+    this.bookService.getAuhors().subscribe(authors => {
+      this.bookAuthors = authors;
+      console.log(authors);
+    });
   }
 
 
@@ -93,9 +116,5 @@ export class BookListComponent implements OnInit {
     
   }
 
-  /// Get authors and 
-
-
-  
 
 }

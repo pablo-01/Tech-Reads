@@ -83,5 +83,13 @@ namespace Controllers
             categories.RemoveAll(x=> !hashset.Add(x));
             return categories;
         }
+
+
+        [HttpGet]
+        [Route("authors")]
+        public string[] GetAuthors() {
+            string[] authors = _bookService.GetAuthors();
+            return authors;
+        }
     }
 }

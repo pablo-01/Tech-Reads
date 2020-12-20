@@ -37,6 +37,12 @@ export class BooksService {
   
   }
 
+
+  // get authors
+  getAuhors() {
+    return this.http.get(this.baseUrl + 'books/' + 'authors');
+  }
+
 }
 
 

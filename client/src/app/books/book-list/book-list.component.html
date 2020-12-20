@@ -6,8 +6,10 @@
             <option  *ngFor="let category of bookCategories">{{category}} </option>
         </select>
         <button  (click)="filterByCategory()" type="submit" class="btn-success ml-2">Filter</button>
-        <input name="searchInput" id="searchInput" type="text" class="ml-4" placeholder="Search by Author or Title" [(ngModel)]="serachTerm">
-        <button  (click)="filterByCategory()" type="submit" class="btn-success ml-2">Search</button>
+
+
+        <input name="searchInput" id="searchInput" type="text" class="ml-4" placeholder="Search by Author or Title">
+        <button   type="submit" class="btn-success ml-2">Search</button>
     </form>
     
 </div>

@@ -158,3 +158,4 @@
 /home/px/Desktop/repos/uni/client-side/bookstore/Tech-Reads/BooksApi/bin/Debug/netcoreapp3.1/SeedData/userSeed.json
 /home/px/Desktop/repos/uni/client-side/bookstore/Tech-Reads/BooksApi/bin/Debug/netcoreapp3.1/AutoMapper.dll
 /home/px/Desktop/repos/uni/client-side/bookstore/Tech-Reads/BooksApi/bin/Debug/netcoreapp3.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/home/px/Desktop/repos/uni/client-side/bookstore/Tech-Reads/BooksApi/bin/Debug/netcoreapp3.1/package-lock.json
