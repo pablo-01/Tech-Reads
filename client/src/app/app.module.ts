@@ -29,7 +29,6 @@ import { JwtInterceptor } from './_httpInterceptors/jwt.interceptor';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { InputTextComponent } from './_forms/input-text/input-text.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FilterPipeModule } from 'ngx-filter-pipe';
 
 @NgModule({
   declarations: [
@@ -63,8 +62,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     }),
     TabsModule.forRoot(),
     NgxChartsModule,
-    NgbModule,
-    FilterPipeModule
+    NgbModule
   ],
   providers: [
     // providing wth error interceptior class, multi: true (to use multiple interceptors)

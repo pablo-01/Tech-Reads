@@ -29,9 +29,9 @@ export class BookListComponent implements OnInit {
 
 
 // searchTerm storage
-  serachTerm = '';
+  serachTerm: any;
 
-// filter 
+// book authors list 
 
  bookAuthors: any;
 
@@ -61,6 +61,7 @@ export class BookListComponent implements OnInit {
   loadBooks() {
     this.bookService.getBooks().subscribe(books => {
       this.books = books;
+      console.log(books);
     })
     this.getBookCategories();
   }
@@ -104,8 +105,8 @@ export class BookListComponent implements OnInit {
     }
     else{
       //console.log(this.newCategories);
-    this.books = this.books.filter(
-      cat => cat.category === this.newCategories);
+      this.books = this.books.filter(
+      book => book.category === this.newCategories);
     }
   }
 
@@ -117,4 +118,25 @@ export class BookListComponent implements OnInit {
   }
 
 
+// author filter - TO FINISH
+  filterByAuthor() {
+    //console.log(this.getAuthors);
+    if(this.serachTerm == null){
+      // TO improve, no need to cal DB since I have all the books on client side already TODO
+      this.loadBooks()
+    }
+    else{
+     console.log(this.serachTerm);
+     
+     this.books = this.books.filter(
+      book => book.authors === this.serachTerm); // get values out of the arrays TODO
+      
+
+
+      console.log(this.books);
+    
+      // ECMAScript 2016
+      //console.log(Object.values(this.books).includes("David Flanagan"));
+    }
+}
 }
