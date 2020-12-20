@@ -2,10 +2,12 @@
 <div class="inline mb-2">
     <form>
         <select (change)="changeCategory($event)" class="form-select" [(ngModel)]="newCategories" name="selectedOption">
-            <option [ngValue]="null">Category</option>
+            <option [ngValue]="null">All Categories</option>
             <option  *ngFor="let category of bookCategories">{{category}} </option>
         </select>
         <button  (click)="filterByCategory()" type="submit" class="btn-success ml-2">Filter</button>
+        <input name="searchInput" id="searchInput" type="text" class="ml-4" placeholder="Search by Author or Title" [(ngModel)]="serachTerm">
+        <button  (click)="filterByCategory()" type="submit" class="btn-success ml-2">Search</button>
     </form>
     
 </div>

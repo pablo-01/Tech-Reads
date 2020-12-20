@@ -8,6 +8,13 @@ import { BooksService } from 'src/app/_services/books.service';
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
+
+  ////
+  // Variables
+  //
+  ////
+
+
   books: Book[];
 
   newBooks: Book[];
@@ -19,6 +26,18 @@ export class BookListComponent implements OnInit {
 
   booksByCategory: any;
 
+
+
+// searchTerm storage
+  serachTerm = '';
+
+
+  ////
+  // Constructor
+  // 
+  ////
+
+
   // inject service
   constructor(private bookService: BooksService) { }
 
@@ -26,6 +45,11 @@ export class BookListComponent implements OnInit {
     
     this.filterByCategory();
   }
+
+  ////
+  // Load data
+  //
+  ////
 
   // loading books; using bookService
   loadBooks() {
@@ -41,6 +65,12 @@ export class BookListComponent implements OnInit {
       this.bookCategories = categories;
     })
   }
+
+
+ ////
+ // Filtering, Searching
+ //
+ ////
 
   // on button filter, filter by category
   filterByCategory() {
@@ -62,6 +92,10 @@ export class BookListComponent implements OnInit {
     this.loadBooks();
     
   }
+
+  /// Get authors and 
+
+
   
 
 }

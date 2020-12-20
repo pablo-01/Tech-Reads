@@ -39,7 +39,7 @@ namespace Controllers
         }
 
         //get user by id
-        //[Authorize]
+        [Authorize]
         [HttpGet("{id:length(24)}")]
         public async Task<ActionResult<ReaderUserDTO>> Get(string id)
         {
@@ -54,6 +54,7 @@ namespace Controllers
         }
 
         // get user by username
+        [Authorize]
         [HttpGet("{username}")]
         public async Task<ActionResult<ReaderUserDTO>> GetByName(string username) 
         {
