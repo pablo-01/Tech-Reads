@@ -16,6 +16,12 @@ import { ReaderUsersService } from 'src/app/_services/reader-users.service';
   styleUrls: ['./book-profile.component.css']
 })
 export class BookProfileComponent implements OnInit {
+  ////
+  // Variables
+  //
+  ////
+
+  // book
   book: Book;
 
   // user from dto
@@ -24,17 +30,29 @@ export class BookProfileComponent implements OnInit {
   // user from account
   user: User;
 
+  // category count for distinct ratings
   categoryCount: any;
-
 
   // ratings data for chart
   seedData: any[] = [];
 
-  // review input
-
+  // new review input
   newReview: string;
 
 
+  // initalize book rating value
+  bookRating = 0;
+
+ // ratings storage
+  bookRatings: any[] = [];
+
+
+
+
+  ////
+  // Constructor
+  //
+  ////
   constructor(private accService: AccountService,
     private route: ActivatedRoute, 
     private bookService: BooksService, 
@@ -42,6 +60,8 @@ export class BookProfileComponent implements OnInit {
     private toastr: ToastrService) { 
     this.accService.currentUser$.pipe(take(1)).subscribe(user => this.user = user)}
 
+
+    // inti
   ngOnInit(): void {
     this.loadBook();
     this.loadReaderUser();
@@ -54,13 +74,14 @@ export class BookProfileComponent implements OnInit {
     this.bookService.getBook(this.route.snapshot.paramMap.get('_id')).subscribe(book => {
       this.book = book;
       this.getRatingsData();
+      this.bookRating = this.calculateAverage();
     })
   }
 
 
-  //  
+  //  add book to model 
+  // then to call save to DB
   addBookToModel() {
-    // TODO FIX CHECK if in history aleardy
     let id = this.book._id;
     let val = this.readerUser.history.filter(function(read) {
       return read.bookId == id;
@@ -76,10 +97,9 @@ export class BookProfileComponent implements OnInit {
 
   }
 
-
+  // save book to history in DB
   saveHistory() {
     console.log("History after added to reader user model is: ")
-    console.log(this.readerUser.history);
     this.readerUserService.updateUser(this.readerUser).subscribe(() => {
     this.toastr.success("Saved to history");
     this.ngOnInit();
@@ -97,9 +117,9 @@ export class BookProfileComponent implements OnInit {
   // extract data for rating distributuin chart
   // get occurances
   getRatingsData() {
-    var occurance = this.book.ratings.reduce(function(occ, item) {
-      occ[item] = (occ[item] || 0) + 1;
-      return occ;
+    var occurance = this.book.ratings.reduce(function(oc, item) {
+      oc[item] = (oc[item] || 0) + 1;
+      return oc;
     }, {});
     // assign
     this.categoryCount = occurance;
@@ -111,37 +131,37 @@ export class BookProfileComponent implements OnInit {
     });
   }
 
-  // format to remove decimal ppint on y axis 
+  // format to remove decimal point on Y axis 
   formatNumbers = (e: number) => {
     return e;
 
   }
 
-
+  // add review to book
+  // push to model
   reviewAddAndUpdate() {
+    this.book.ratings.push(this.bookRating);
     this.book.reviews.push({reviewer: this.user.username, review: this.newReview})
     console.log(this.book);
     
-    
+    /// save to DB
     this.bookService.bookUpdate(this.book._id ,this.book).subscribe(() => {
-       this.toastr.success('Review Added');
-     })
-
-    //this.bookService.bookUpdate(this.book);
-
-
-    /// TODO implement bookUpdate()
-
-
-    // console.log('Existing reviews');
-    // console.log(this.book.reviews);
-
-    // // username of logged in user
-    // console.log('logged in user');
-    // console.log(this.readerUser.username);
-
-    // console.log(this.newReview);
-    // this.toastr.success('Review added');
-
+        this.toastr.success('Review Added');
+    })
+    this.ngOnInit();
   }
+
+
+
+  // calculate ratings
+  calculateAverage(): number{
+    let ratingIn = this.book.ratings;
+    var total = 0;
+    for(var i = 0; i < ratingIn.length; ++i){
+      total = total + ratingIn[i];
+    }
+
+    return Math.round(total / this.book.ratings.length);
+  }
+
 }

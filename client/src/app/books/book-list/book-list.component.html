@@ -1,3 +1,14 @@
+
+<div class="inline mb-2">
+    <form>
+        <select (change)="changeCategory($event)" class="form-select" [(ngModel)]="newCategories" name="selectedOption">
+            <option [ngValue]="null">Category</option>
+            <option  *ngFor="let category of bookCategories">{{category}} </option>
+        </select>
+        <button   (click)="filterByCategory()" type="submit" class="btn-success ml-2">Filter</button>
+    </form>
+    
+</div>
 <div class="row">
     <!-- 2 columns per user out of 12 bootstrap columns -->
     <div *ngFor="let book of books" class="col-3" >

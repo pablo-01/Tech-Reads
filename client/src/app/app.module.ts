@@ -28,6 +28,7 @@ import { UserCardComponent } from './users/user-card/user-card.component';
 import { JwtInterceptor } from './_httpInterceptors/jwt.interceptor';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { InputTextComponent } from './_forms/input-text/input-text.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { InputTextComponent } from './_forms/input-text/input-text.component';
     }),
     TabsModule.forRoot(),
     NgxChartsModule,
+    NgbModule,
   ],
   providers: [
     // providing wth error interceptior class, multi: true (to use multiple interceptors)

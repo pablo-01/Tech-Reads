@@ -7,7 +7,12 @@
             <div class="card-body">
                 <div style="text-align: center;">
                     <strong>Rating:</strong>
-                    <p> Rating will go here:</p>
+                    <div class="rating">
+                        <div class="stars" >
+                            <ngb-rating [max]="5" [(rate)]="bookRating" [readonly]="true"></ngb-rating>
+                            <small>[{{book.ratings.length}}]</small>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="card-footer">
@@ -27,6 +32,12 @@
                     <strong> Publisher:  </strong> {{book.publisher}}, {{book.year}} |
                     <strong>ISBN: </strong> {{book.isbn}}
                 </h6>
+                <div class="rating">
+                    <div class="stars" >
+                        <ngb-rating [max]="5" [(rate)]="bookRating" [readonly]="true"></ngb-rating>
+                        <small>[{{book.ratings.length}}]</small>
+                    </div>
+                </div>
                 <br>
                 <h4>Book rating distribution</h4>
                 <br>
@@ -59,15 +70,21 @@
                     <strong>ISBN: </strong> {{book.isbn}}
                 </h6>
                 <div>
+                    <div class="rating">
+                        <div class="ratingIcons" >
+                            <ngb-rating [max]="5" [(rate)]="bookRating" [readonly]="false"></ngb-rating>
+                        </div>
+                    </div>
                     <form #formEdit="ngForm" class="mb-2" (ngSubmit)="reviewAddAndUpdate()">
                         <div>
                         <h4>Add Review</h4>
                         <textarea [(ngModel)]="newReview" name="review" rows="5" class="form-control"></textarea>
                         </div>
                         <br>
-                        <button class="btn-success form-control">Add Review</button>
+                        <button  class="btn-success form-control" [disabled]="!formEdit.dirty">Add Review</button>
                         <br>
                     </form>
+                    
                     <h5>User reviews</h5>
                     <div *ngFor="let review of book.reviews">
                         <h6>Review by <strong>{{review.reviewer}}</strong></h6>
